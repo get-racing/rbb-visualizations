@@ -22,7 +22,11 @@ rules:
         config:
           topics:
             /zed/zed_node/left/image_rect_color: "sensor_msgs/Image"
+          remapping:
+            /zed/zed_node/left/image_rect_color: "/zed/zed_node/left/image_rect_color"
       - type: "rbb_tools.extraction.matchers.ExactMatchingRule"
         config:
           topics:
             /zed/zed_node/right/image_rect_color: "sensor_msgs/Image"
+          remapping:
+            /zed/zed_node/right/image_rect_color: "/zed/zed_node/right/image_rect_color"
