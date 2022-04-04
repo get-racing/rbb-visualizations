@@ -27,6 +27,12 @@ rules:
       - type: "rbb_tools.extraction.matchers.ExactMatchingRule"
         config:
           topics:
-            /zed/zed_node/right/image_rect_color: "sensor_msgs/Image"
+            /zed/zed_node/left/image_rect_color: "sensor_msgs/Image"
           remapping:
-            /zed/zed_node/right/image_rect_color: "/image"
+            /zed/zed_node/left/image_rect_color/compressed: "/image"
+      - type: "rbb_tools.extraction.matchers.ExactMatchingRule"
+        config:
+          topics:
+            /darknet_ros/detection_image: "sensor_msgs/Image"
+          remapping:
+            /darknet_ros/detection_image: "/image"
