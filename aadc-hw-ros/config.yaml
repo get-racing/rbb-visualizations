@@ -1,0 +1,118 @@
+# Title of this configuration file
+title: "Euroc IMU and groundtruth"
+# Tag that identifies this configuration file.
+tag: "euroc-test"
+# Description of this configuration file
+description: ""
+# Author of this configuration file
+author: ""
+
+# Extraction rules
+rules:
+  time-series-car:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /sensors/imu1/data_raw:
+          # Sub sampling goes here
+          name: "IMU1"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+            angular_velocity.x:
+              default_color: "#FF9090"
+            angular_velocity.y:
+              default_color: "#90FF90"
+            angular_velocity.z:
+              default_color: "#9090FF"  
+        /sensors/imu2/data_raw:
+          # Sub sampling goes here
+          name: "IMU2"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+            angular_velocity.x:
+              default_color: "#FF9090"
+            angular_velocity.y:
+              default_color: "#90FF90"
+            angular_velocity.z:
+              default_color: "#9090FF"  
+        /aadc_car/aadc_hw_drivers/imu_integrated/data_raw:
+          # Sub sampling goes here
+          name: "IMU AADC HW"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+            angular_velocity.x:
+              default_color: "#FF9090"
+            angular_velocity.y:
+              default_color: "#90FF90"
+            angular_velocity.z:
+              default_color: "#9090FF"  
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+  
+  matplotlib-rule:
+    plugin: "rbb_tools.plugins.matplotlib_plotter"
+    config:
+      data:
+        # # Vicon Cone Marker
+        # - name: "vicon_cone_marker_x"
+        #   type: "raw"
+        #   topic: "/vicon/aadc17_cone_marker/aadc17_cone_marker.transform.translation.x"
+        # - name: "vicon_cone_marker_y"
+        #   type: "raw"
+        #   topic: "/vicon/aadc17_cone_marker/aadc17_cone_marker.transform.translation.y"
+
+        # Vicon AADC Car
+        - name: "vicon_aadc_car_x"
+          type: "raw"
+          topic: "/vicon/aadc17_car/aadc17_car.transform.translation.x"
+        - name: "vicon_aadc_car_y"
+          type: "raw"
+          topic: "/vicon/aadc17_car/aadc17_car.transform.translation.y"
+
+      figures:
+        xy_plot:
+          title: "Truth XY"
+          xlabel: "X"
+          ylabel: "Y"
+          aspect: "equal"
+          legend: "best"
+          width: 1500
+          height: 1500
+          plots:
+            - type: "lineplot"
+              x: "vicon_aadc_car_x"
+              y: "vicon_aadc_car_y"
+              kwargs:
+                label: "Leica"
+            # - type: "lineplot"
+            #   x: "vicon_x"
+            #   y: "vicon_y"
+            #   kwargs:
+            #     label: "VICON"
+
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+
+
+
