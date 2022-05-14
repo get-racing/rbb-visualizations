@@ -1,7 +1,7 @@
 # Title of this configuration file
-title: "Euroc IMU and groundtruth"
+title: "AADC HW ROS IMU and Groundtruth"
 # Tag that identifies this configuration file.
-tag: "euroc-test"
+tag: "aadc-hw-imu-vicon"
 # Description of this configuration file
 description: ""
 # Author of this configuration file
@@ -102,7 +102,7 @@ rules:
               x: "vicon_aadc_car_x"
               y: "vicon_aadc_car_y"
               kwargs:
-                label: "Leica"
+                label: "Vicon"
             # - type: "lineplot"
             #   x: "vicon_x"
             #   y: "vicon_y"
