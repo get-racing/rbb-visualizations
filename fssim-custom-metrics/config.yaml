@@ -1,0 +1,18 @@
+# Title of this configuration file
+title: "FSSIM Custom Metrics"
+# Tag that identifies this configuration file.
+tag: "fssim-custom-metrics"
+# Description of this configuration file
+description: "FSSIM Custom Metrics"
+# Author of this configuration file
+author: "felix.stegmaier@tu-dortmund.de"
+
+# Extraction rules
+rules:
+  fssim-custom-metrics:
+    plugin: "rbb_tools.plugins.fssim_custom_metrics"
+    config:
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
