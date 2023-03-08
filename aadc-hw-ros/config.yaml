@@ -64,6 +64,23 @@ rules:
               default_color: "#90FF90"
             angular_velocity.z:
               default_color: "#9090FF"  
+        /sensors/imu_tinker:
+          # Sub sampling goes here
+          name: "Tinkerforge IMU"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+            angular_velocity.x:
+              default_color: "#FF9090"
+            angular_velocity.y:
+              default_color: "#90FF90"
+            angular_velocity.z:
+              default_color: "#9090FF"  
     topic_matchers:
       - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
         config:
