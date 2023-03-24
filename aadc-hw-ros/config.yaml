@@ -9,13 +9,13 @@ author: ""
 
 # Extraction rules
 rules:
-  time-series-car:
+  imus-all:
     plugin: "rbb_tools.plugins.time_series"
     config:
       topics:
         /sensors/imu1/data_raw:
           # Sub sampling goes here
-          name: "IMU1"
+          name: "IMU1 Accel & Gyro"
           # Series are the message fields to record
           series:
             linear_acceleration.x:
@@ -32,7 +32,7 @@ rules:
               default_color: "#9090FF"  
         /sensors/imu2/data_raw:
           # Sub sampling goes here
-          name: "IMU2"
+          name: "IMU2 Accel & Gyro"
           # Series are the message fields to record
           series:
             linear_acceleration.x:
@@ -49,7 +49,7 @@ rules:
               default_color: "#9090FF"  
         /aadc_car/aadc_hw_drivers/imu_integrated/data_raw:
           # Sub sampling goes here
-          name: "IMU AADC HW"
+          name: "IMU AADC HW Accel & Gyro"
           # Series are the message fields to record
           series:
             linear_acceleration.x:
@@ -66,7 +66,7 @@ rules:
               default_color: "#9090FF"  
         /sensors/imu_tinker:
           # Sub sampling goes here
-          name: "Tinkerforge IMU"
+          name: "Tinkerforge IMU Accel & Gyro"
           # Series are the message fields to record
           series:
             linear_acceleration.x:
@@ -85,6 +85,132 @@ rules:
       - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
         config:
   
+  imus-accel:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /sensors/imu1/data_raw:
+          # Sub sampling goes here
+          name: "IMU1 Accel"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+        /sensors/imu2/data_raw:
+          # Sub sampling goes here
+          name: "IMU2 Accel"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+        /aadc_car/aadc_hw_drivers/imu_integrated/data_raw:
+          # Sub sampling goes here
+          name: "IMU AADC HW Accel"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+        /sensors/imu_tinker:
+          # Sub sampling goes here
+          name: "Tinkerforge IMU Accel"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  imus-gyro:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /sensors/imu1/data_raw:
+          # Sub sampling goes here
+          name: "IMU1 Gyro"
+          # Series are the message fields to record
+          series:
+            angular_velocity.x:
+              default_color: "#FF0000"
+            angular_velocity.y:
+              default_color: "#00FF00"
+            angular_velocity.z:
+              default_color: "#0000FF"   
+        /sensors/imu2/data_raw:
+          # Sub sampling goes here
+          name: "IMU2 Gyro"
+          # Series are the message fields to record
+          series:
+            angular_velocity.x:
+              default_color: "#FF0000"
+            angular_velocity.y:
+              default_color: "#00FF00"
+            angular_velocity.z:
+              default_color: "#0000FF"  
+        /aadc_car/aadc_hw_drivers/imu_integrated/data_raw:
+          # Sub sampling goes here
+          name: "IMU AADC HW Gyro"
+          # Series are the message fields to record
+          series:
+            angular_velocity.x:
+              default_color: "#FF0000"
+            angular_velocity.y:
+              default_color: "#00FF00"
+            angular_velocity.z:
+              default_color: "#0000FF"  
+        /sensors/imu_tinker:
+          # Sub sampling goes here
+          name: "Tinkerforge IMU Gyro"
+          # Series are the message fields to record
+          series:
+            angular_velocity.x:
+              default_color: "#FF0000"
+            angular_velocity.y:
+              default_color: "#00FF00"
+            angular_velocity.z:
+              default_color: "#0000FF"  
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  imus-temps:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /sensors/imu1/temp:
+          # Sub sampling goes here
+          name: "IMU1 Temp"
+          # Series are the message fields to record
+          series:
+            temperature:
+              default_color: "#FF0000"
+        /sensors/imu2/temp:
+          # Sub sampling goes here
+          name: "IMU2 Temp"
+          # Series are the message fields to record
+          series:
+            temperature:
+              default_color: "#FF0000"
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
   matplotlib-rule:
     plugin: "rbb_tools.plugins.matplotlib_plotter"
     config:
