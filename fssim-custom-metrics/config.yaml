@@ -12,14 +12,14 @@ rules:
   fssim-custom-metrics:
     plugin: "rbb_tools.plugins.fssim_custom_metrics"
     config:
+      topics:
         fssim_topic_track: "/fssim/track"
         fssim_topic_markers: "/fssim/track/markers"
         fssim_topic_gt_pose: "/fssim/base_pose_ground_truth"
         jarvic_topic_slam: "/est/slam/state"
         jarvic_topic_slam_map: "/est/slam/map"
         jarvic_topic_loc_state: "/est/localization/state"
-        # TODO: change back to /planning/trajectory
-        jarvic_topic_trajectory: "/test/planning/trajectory"
+        jarvic_topic_trajectory: "/planning/trajectory"
     topic_matchers:
       - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
         config:
