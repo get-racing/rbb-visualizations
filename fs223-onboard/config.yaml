@@ -60,7 +60,7 @@ rules:
       topics:
         /vectornav/IMU:
           # Sub sampling goes here
-          name: "IMU1 Gyro"
+          name: "VectorNav Gyro"
           # Series are the message fields to record
           series:
             angular_velocity.x:
@@ -72,7 +72,40 @@ rules:
     topic_matchers:
       - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
         config:
-  
+
+  controls-steering-viz:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /pid_speed_controller_node/debug/error/p:
+          name: "PID p error"
+          series:
+            data:
+              default_color: "#79bd3e"
+        /pid_speed_controller_node/debug/error/i:
+          name: "PID i error"
+          series:
+            data:
+              default_color: "#a23ead"
+        /pid_speed_controller_node/debug/error/d:
+          name: "PID d error"
+          series:
+            data:
+              default_color: "#3eb8bd"
+        /pid_speed_controller_node/debug/ref_speed:
+          name: "PID ref speed"
+          series:
+            data:
+              default_color: "#735450"
+        /con/speed/control_command:
+          name: "throttle"
+          series:
+            data:
+              default_color: "#b0a400"
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
   matplotlib-rule:
     plugin: "rbb_tools.plugins.matplotlib_plotter"
     config:
