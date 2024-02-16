@@ -124,7 +124,7 @@ rules:
           topic: "/est/slam/state.pos.x"
         - name: "slam_y"
           type: "raw"
-          topic: "/est/slam/state.pos.x"
+          topic: "/est/slam/state.pos.y"
 
       figures:
         slam-and-truth-pose:
