@@ -1,0 +1,152 @@
+# Title of this configuration file
+title: "Jarvic RViz 1"
+# Tag that identifies this configuration file.
+tag: "jarvic-rviz-1"
+# Description of this configuration file
+description: ""
+# Author of this configuration file
+author: ""
+
+# Extraction rules
+rules:
+
+  fs224-rviz:
+    plugin: "rbb_tools.plugins.rviz_recorder"
+    config:
+      rviz_file: 'fs224-onboard.rviz'
+      title: 'fs224-onboard'
+      width: 1920
+      height: 1080
+      logo: 'logo.png'
+      logo_x: 30
+      logo_y: 30
+      text_x: 200
+      text_y: 30
+      font: 'helvetica.ttf'
+      splash_screen: 'grumpy-bug.png'
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  topic-info:
+    plugin: "rbb_tools.plugins.detailed_topic_info"
+    config:
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  imus-accel:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /vectornav/IMU:
+          # Sub sampling goes here
+          name: "VectorNav Accel"
+          # Series are the message fields to record
+          series:
+            linear_acceleration.x:
+              default_color: "#FF0000"
+            linear_acceleration.y:
+              default_color: "#00FF00"
+            linear_acceleration.z:
+              default_color: "#0000FF"   
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  imus-gyro:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /vectornav/IMU:
+          # Sub sampling goes here
+          name: "VectorNav Gyro"
+          # Series are the message fields to record
+          series:
+            angular_velocity.x:
+              default_color: "#FF0000"
+            angular_velocity.y:
+              default_color: "#00FF00"
+            angular_velocity.z:
+              default_color: "#0000FF"   
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  controls-velo-viz:
+    plugin: "rbb_tools.plugins.time_series"
+    config:
+      topics:
+        /pid_speed_controller_node/debug/error/p:
+          name: "PID p error"
+          series:
+            data:
+              default_color: "#79bd3e"
+        /pid_speed_controller_node/debug/error/i:
+          name: "PID i error"
+          series:
+            data:
+              default_color: "#a23ead"
+        /pid_speed_controller_node/debug/error/d:
+          name: "PID d error"
+          series:
+            data:
+              default_color: "#3eb8bd"
+        /pid_speed_controller_node/debug/ref_speed:
+          name: "PID ref speed"
+          series:
+            data:
+              default_color: "#735450"
+        /con/speed/control_command:
+          name: "throttle"
+          series:
+            data:
+              default_color: "#b0a400"
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
+
+  xy-plot:
+    plugin: "rbb_tools.plugins.matplotlib_plotter"
+    config:
+      data:
+        # # Groundtruth
+        # - name: "groundtruth_x"
+        #   type: "raw"
+        #   topic: "/fssim/base_pose_ground_truth.x"
+        # - name: "groundtruth_y"
+        #   type: "raw"
+        #   topic: "/fssim/base_pose_ground_truth.y"
+
+        # SLAM Pose
+        - name: "slam_x"
+          type: "raw"
+          topic: "/jarvic/estimation/car_state.pos.x"
+        - name: "slam_y"
+          type: "raw"
+          topic: "/jarvic/estimation/car_state.pos.y"
+
+      figures:
+        slam-and-truth-pose:
+          title: "SLAM and Truth Pose"
+          xlabel: "X"
+          ylabel: "Y"
+          aspect: "equal"
+          legend: "best"
+          width: 1500
+          height: 1500
+          plots:
+            # - type: "lineplot"
+            #   x: "groundtruth_x"
+            #   y: "groundtruth_y"
+            #   kwargs:
+            #     label: "Truth Pose"
+            - type: "lineplot"
+              x: "slam_x"
+              y: "slam_y"
+              kwargs:
+                label: "SLAM Pose"
+
+    topic_matchers:
+      - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
+        config:
