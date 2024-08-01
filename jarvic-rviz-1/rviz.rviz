@@ -307,7 +307,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Pitch: 0.48274001479148865
-      Target Frame: fssim/vehicle/base_link
+      Target Frame: vehicle/base_link
       Value: ThirdPersonFollower (rviz)
       Yaw: 3.1286654472351074
     Saved: ~
