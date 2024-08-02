@@ -214,7 +214,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /visualization/visual_boundary
+      Marker Topic: /jarvic/visualization/boundary_visualizer_node/vis/boundary
       Name: Boundary
       Namespaces:
         {}
@@ -222,7 +222,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /control/pure_pursuit/goal_marker
+      Marker Topic: /jarvic/controls/visualize/goal_marker
       Name: MarkerArray
       Namespaces:
         {}
@@ -232,7 +232,7 @@ Visualization Manager:
       Displays:
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /est/slam/visual_map
+          Marker Topic: /jarvic/estimation/fastslam_node/visualization/map
           Name: SLAMMap
           Namespaces:
             {}
@@ -240,7 +240,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/Marker
           Enabled: true
-          Marker Topic: /est/slam/visual_state
+          Marker Topic: /jarvic/estimation/fastslam_node/visualization/state
           Name: SLAMState
           Namespaces:
             {}
@@ -248,7 +248,7 @@ Visualization Manager:
           Value: true
         - Class: rviz/Marker
           Enabled: true
-          Marker Topic: /est/localization/state
+          Marker Topic: /jarvic/estimation/localizer_node_node/visualization/state
           Name: Marker
           Namespaces:
             {}
@@ -256,13 +256,12 @@ Visualization Manager:
           Value: true
       Enabled: true
       Name: SLAM
-    - Alpha: 1
-      Class: rviz/Polygon
+    - Class: rviz/Marker
       Color: 25; 255; 0
       Enabled: true
       Name: Trajectory
-      Topic: /visualize/trajectory
-      Unreliable: false
+      Marker Topic: /jarvic/visualization/visualize_trajectory_node/pub_visual_topic_name_
+      Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
@@ -308,7 +307,7 @@ Visualization Manager:
       Name: Current View
       Near Clip Distance: 0.009999999776482582
       Pitch: 0.48274001479148865
-      Target Frame: fssim/vehicle/base_link
+      Target Frame: vehicle/base_link
       Value: ThirdPersonFollower (rviz)
       Yaw: 3.1286654472351074
     Saved: ~

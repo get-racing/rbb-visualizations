@@ -19,10 +19,10 @@ rules:
         fssim_topic_leaving_track: "/fssim/leaving_track"
         fssim_topic_markers: "/fssim/track/markers"
         fssim_topic_track: "/fssim/track"
-        jarvic_topic_loc_state: "/est/localization/state"
-        jarvic_topic_slam_map: "/est/slam/map"
-        jarvic_topic_slam: "/est/slam/state"
-        jarvic_topic_trajectory: "/planning/trajectory"
+        jarvic_topic_loc_state: "/jarvic/estimation/car_state"
+        jarvic_topic_slam_map: "/jarvic/estimation/map"
+        jarvic_topic_slam: "/jarvic/estimation/slam/state_feedback"
+        jarvic_topic_trajectory: "/jarvic/planning/trajectory"
     topic_matchers:
       - type: "rbb_tools.extraction.matchers.AllTopicsMatchingRule"
         config:
